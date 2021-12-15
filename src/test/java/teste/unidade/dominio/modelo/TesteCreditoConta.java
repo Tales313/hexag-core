@@ -1,8 +1,10 @@
 package teste.unidade.dominio.modelo;
 
 import conta.sistema.dominio.modelo.Conta;
+import conta.sistema.dominio.modelo.NegocioException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
@@ -20,6 +22,15 @@ public class TesteCreditoConta {
         contaValida = new Conta(1, cem, "Tales");
     }
 
-
+    @Test
+    @DisplayName("Validar valor de crédito nulo como obrigatório")
+    void teste01() {
+        try {
+            contaValida.creditar(null);
+            fail("Valor de crédito deveria ser obrigatório");
+        } catch (NegocioException e) {
+            assertEquals(e.getMessage(), "Valor de crédito é obrigatório.");
+        }
+    }
 
 }
