@@ -2,6 +2,10 @@ package conta.sistema.dominio.modelo;
 
 import java.math.BigDecimal;
 
+import static conta.sistema.dominio.modelo.Erro.obrigatorio;
+import static conta.sistema.dominio.modelo.Erro.saldoInsuficiente;
+import static java.util.Objects.isNull;
+
 public class Conta {
 
     private Integer numero;
@@ -21,11 +25,26 @@ public class Conta {
     }
 
     public void creditar(BigDecimal credito) throws NegocioException {
+        if (isNull(credito))
+            obrigatorio("Valor crédito");
 
+        if (credito.compareTo(BigDecimal.ZERO) <= 0)
+            obrigatorio("Valor crédito");
+
+        saldo = saldo.add(credito);
     }
 
     public void debitar(BigDecimal debito) throws NegocioException {
+        if (isNull(debito))
+            obrigatorio("Valor débito");
 
+        if (debito.compareTo(BigDecimal.ZERO) <= 0)
+            obrigatorio("Valor débito");
+
+        if (debito.compareTo(saldo) > 0)
+            saldoInsuficiente();
+
+        saldo = saldo.subtract(debito);
     }
 
     public Integer getNumero() {

@@ -12,10 +12,10 @@ public class Erro {
     }
 
     // erros especificos
-    public static void saldoInsuficiente(String nome) {
+    public static void saldoInsuficiente() {
         throw new NegocioException("Saldo insuficiente.");
     }
-    public static void mesmaConta(String nome) {
+    public static void mesmaConta() {
         throw new NegocioException("Conta débito e crédito devem ser diferentes.");
     }
 

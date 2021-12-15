@@ -6,7 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>sistema</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.5-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>12</maven.compiler.source>
