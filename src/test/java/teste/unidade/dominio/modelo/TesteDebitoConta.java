@@ -30,7 +30,10 @@ public class TesteDebitoConta {
             fail("Valor de débito deveria ser obrigatório");
         } catch (NegocioException e) {
             assertEquals(e.getMessage(), "Valor de débito é obrigatório.");
+            System.out.println(e.getMessage());
         }
     }
+
+
 
 }

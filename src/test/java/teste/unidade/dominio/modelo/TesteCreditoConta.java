@@ -30,6 +30,43 @@ public class TesteCreditoConta {
             fail("Valor de crédito deveria ser obrigatório");
         } catch (NegocioException e) {
             assertEquals(e.getMessage(), "Valor de crédito é obrigatório.");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    @DisplayName("Validar valor de crédito negativo como obrigatório")
+    void teste02() {
+        try {
+            contaValida.creditar(new BigDecimal(-1));
+            fail("Valor de crédito deveria ser obrigatório");
+        } catch (NegocioException e) {
+            assertEquals(e.getMessage(), "Valor de crédito é obrigatório.");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    @DisplayName("Validar valor de crédito zero como obrigatório")
+    void teste03() {
+        try {
+            contaValida.creditar(new BigDecimal(0));
+            fail("Valor de crédito deveria ser obrigatório");
+        } catch (NegocioException e) {
+            assertEquals(e.getMessage(), "Valor de crédito é obrigatório.");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    @DisplayName("Validar valor de crédito positivo")
+    void teste04() {
+        try {
+            contaValida.creditar(BigDecimal.ONE);
+            var saldoFinal = cem.add(BigDecimal.ONE);
+            assertEquals(contaValida.getSaldo(), saldoFinal, "Saldo deve bater");
+        } catch (NegocioException e) {
+            fail("Deve creditar com sucesso - " + e.getMessage());
         }
     }
 
