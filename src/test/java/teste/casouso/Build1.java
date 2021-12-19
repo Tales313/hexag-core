@@ -10,6 +10,6 @@ import org.springframework.context.annotation.Configuration;
         // adaptadores falsos
          "conta.adaptador"
 })
-public class Buiild1 {
+public class Build1 {
     // Build 1: Adaptador Teste -> Sistema <- Adaptadores Mock
 }
