@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 @DisplayName("Regra de crédito de conta")
 public class TesteCreditoConta {
 
-    BigDecimal cem = new BigDecimal(100L);
+    BigDecimal cem = new BigDecimal(100);
     Conta contaValida;
 
     @BeforeEach
