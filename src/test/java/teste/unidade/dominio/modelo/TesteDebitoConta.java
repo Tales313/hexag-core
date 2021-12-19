@@ -87,7 +87,7 @@ public class TesteDebitoConta {
         try {
             contaValida.debitar(BigDecimal.TEN);
             var saldoFinal = cem.subtract(BigDecimal.TEN);
-            assertEquals(contaValida.getSaldo(), saldoFinal, "Saldo deve zerar");
+            assertEquals(contaValida.getSaldo(), saldoFinal, "Saldo deve bater");
         } catch (NegocioException e) {
             fail("Deve debitar com sucesso - " + e.getMessage());
         }

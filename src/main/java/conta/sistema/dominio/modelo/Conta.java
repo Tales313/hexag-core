@@ -24,7 +24,7 @@ public class Conta {
         this.correntista = correntista;
     }
 
-    public void creditar(BigDecimal credito) throws NegocioException {
+    public void creditar(BigDecimal credito) {
         if (isNull(credito))
             obrigatorio("Valor de crédito");
 
@@ -34,7 +34,7 @@ public class Conta {
         saldo = saldo.add(credito);
     }
 
-    public void debitar(BigDecimal debito) throws NegocioException {
+    public void debitar(BigDecimal debito) {
         if (isNull(debito))
             obrigatorio("Valor de débito");
 
