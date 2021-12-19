@@ -6,6 +6,7 @@ import conta.sistema.dominio.servico.Transferencia;
 import conta.sistema.porta.ContaRepositorio;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.inject.Named;
 import java.math.BigDecimal;
 
 import static java.util.Objects.isNull;
@@ -13,10 +14,15 @@ import static conta.sistema.dominio.modelo.Erro.obrigatorio;
 import static conta.sistema.dominio.modelo.Erro.inexistente;
 import static conta.sistema.dominio.modelo.Erro.mesmaConta;
 
+@Named
 public class PortaTransferenciaImp implements PortaTransferencia {
 
     private ContaRepositorio contaRepositorio;
     private Transferencia transferencia;
+
+    // TODO ver se esse construtor vazio deve ficar aqui mesmo
+    // pois o compilador estava reclamando do @Named com a classe sem construtor vazio
+    public PortaTransferenciaImp() {}
 
     public PortaTransferenciaImp(ContaRepositorio contaRepositorio, Transferencia transferencia) {
         this.contaRepositorio = contaRepositorio;

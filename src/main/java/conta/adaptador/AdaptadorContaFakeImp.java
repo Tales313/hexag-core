@@ -4,12 +4,14 @@ import conta.sistema.dominio.modelo.Conta;
 import conta.sistema.dominio.modelo.NegocioException;
 import conta.sistema.porta.ContaRepositorio;
 
+import javax.inject.Named;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
 import static java.util.Objects.isNull;
 
+@Named
 public class AdaptadorContaFakeImp implements ContaRepositorio {
 
     private Map<Integer, Conta> banco = new HashMap<>();
