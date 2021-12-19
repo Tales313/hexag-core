@@ -34,6 +34,63 @@ public class TesteDebitoConta {
         }
     }
 
+    @Test
+    @DisplayName("Validar valor de débito negativo como obrigatório")
+    void teste02() {
+        try {
+            contaValida.debitar(new BigDecimal(-1));
+            fail("Valor de débito deveria ser obrigatório");
+        } catch (NegocioException e) {
+            assertEquals(e.getMessage(), "Valor de débito é obrigatório.");
+            System.out.println(e.getMessage());
+        }
+    }
 
+    @Test
+    @DisplayName("Validar valor de débito zero como obrigatório")
+    void teste03() {
+        try {
+            contaValida.debitar(BigDecimal.ZERO);
+            fail("Valor de débito deveria ser obrigatório");
+        } catch (NegocioException e) {
+            assertEquals(e.getMessage(), "Valor de débito é obrigatório.");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    @DisplayName("Validar valor de débito acima do saldo")
+    void teste04() {
+        try {
+            contaValida.debitar(cem.add(BigDecimal.ONE));
+            fail("Valor de débito acima do saldo");
+        } catch (NegocioException e) {
+            assertEquals(e.getMessage(), "Saldo insuficiente.");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    @DisplayName("Validar valor de débito igual ao saldo")
+    void teste05() {
+        try {
+            contaValida.debitar(cem);
+            assertEquals(contaValida.getSaldo(), BigDecimal.ZERO, "Saldo deve zerar");
+        } catch (NegocioException e) {
+            fail("Deve debitar com sucesso - " + e.getMessage());
+        }
+    }
+
+    @Test
+    @DisplayName("Validar valor de débito abaixo do saldo")
+    void teste06() {
+        try {
+            contaValida.debitar(BigDecimal.TEN);
+            var saldoFinal = cem.subtract(BigDecimal.TEN);
+            assertEquals(contaValida.getSaldo(), saldoFinal, "Saldo deve zerar");
+        } catch (NegocioException e) {
+            fail("Deve debitar com sucesso - " + e.getMessage());
+        }
+    }
 
 }
