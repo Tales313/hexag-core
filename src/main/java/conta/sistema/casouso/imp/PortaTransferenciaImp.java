@@ -20,10 +20,6 @@ public class PortaTransferenciaImp implements PortaTransferencia {
     private ContaRepositorio contaRepositorio;
     private Transferencia transferencia;
 
-    // TODO ver se esse construtor vazio deve ficar aqui mesmo
-    // pois o compilador estava reclamando do @Named com a classe sem construtor vazio
-    public PortaTransferenciaImp() {}
-
     public PortaTransferenciaImp(ContaRepositorio contaRepositorio, Transferencia transferencia) {
         this.contaRepositorio = contaRepositorio;
         this.transferencia = transferencia;
